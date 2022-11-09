@@ -28,6 +28,7 @@ class PhotoController {
     static createPhoto(req,res) {
         const { title, caption, image_url } = req.body;
 
+        console.log(title);
         Photo.create({
             title,caption,image_url
         })

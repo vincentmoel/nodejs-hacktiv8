@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "db:create:test" : "set NODE_ENV=test & npx sequelize db:create",
+    "db:migrate:test" : "set NODE_ENV=test & npx sequelize db:migrate"
+  },
+  "jest": {
+    "collectCoverage": true
   },
   "keywords": [],
   "author": "",
@@ -17,6 +22,8 @@
     "sequelize": "^6.23.2"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.5.1"
+    "jest": "^29.3.1",
+    "sequelize-cli": "^6.5.1",
+    "supertest": "^6.3.1"
   }
 }
