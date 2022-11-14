@@ -2,13 +2,13 @@ const request = require('supertest');
 const app = require('../app');
 const { sequelize } = require('../models');
 const photoData = {
-    title: "asd1",
-    caption: "asd2",
-    image_url: "as3d"
+    title: "Title Photo",
+    caption: "Caption Photo",
+    image_url: "URL Photo"
 };
 
 describe('POST /photos', () => {
-    it("should send response with 201 status code", async(done) => {
+    it("should send response with 201 status code", (done) => {
         request(app)
             .post('/photos')
             .send(photoData)
@@ -17,8 +17,9 @@ describe('POST /photos', () => {
                     done(err)
                 }
                 expect(res.status).toEqual(201);
+                // expect(typeof res.body).toEqual("object");
+                // expect(res.body).toHave
                 done()
             })
     })
 });
-
