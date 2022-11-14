@@ -7,6 +7,12 @@ const photoData = {
     image_url: "URL Photo"
 };
 
+const wrongPhotoData = {
+    titlewrong: "Title Photo",
+    caption: "Caption Photo",
+    image_url: "URL Photo"
+};
+
 describe('POST /photos', () => {
     it("should send response with 201 status code", (done) => {
         request(app)
@@ -25,6 +31,22 @@ describe('POST /photos', () => {
                 expect(typeof res.body.caption).toEqual("string");
                 expect(typeof res.body.image_url).toEqual("string");
 
+                done();
+            })
+    })
+
+});
+describe('POST /photos', () => {
+    it("should send response with 500 status code", (done) => {
+        request(app)
+            .post('/photos')
+            .send(wrongPhotoData)
+            .end(function (err, res) {
+                if (err) {
+                    done(err)
+                }
+                expect(res.status).toEqual(500);
+                expect(typeof res.body).toEqual("object");
                 done();
             })
     })
@@ -53,12 +75,29 @@ describe('GET /photos', () => {
 describe('GET /photos/1', () => {
     it("should send response with 200 status code", (done) => {
         request(app)
-            .get('/photos')
+            .get('/photos/1')
             .end(function (err, res) {
                 if (err) {
                     done(err)
                 }
                 expect(res.status).toEqual(200);
+                expect(typeof res.body).toEqual("object");
+                
+                done();
+            })
+    })
+
+});
+
+describe('GET /photos/asd', () => {
+    it("should send response with 200 status code", (done) => {
+        request(app)
+            .get('/photos/asd')
+            .end(function (err, res) {
+                if (err) {
+                    done(err)
+                }
+                expect(res.status).toEqual(500);
                 expect(typeof res.body).toEqual("object");
                 
                 done();
