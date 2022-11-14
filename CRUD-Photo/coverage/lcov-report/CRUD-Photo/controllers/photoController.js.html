@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/24</span>
+                <span class='fraction'>8/24</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.33% </span>
+                <span class="strong">26.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/15</span>
+                <span class='fraction'>4/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/24</span>
+                <span class='fraction'>8/24</span>
             </div>
         
             
@@ -157,9 +157,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -245,17 +245,17 @@
 &nbsp;
 &nbsp;
 class PhotoController {
-<span class="fstat-no" title="function not covered" >    st</span>atic getAllPhotos(req,res) {
-<span class="cstat-no" title="statement not covered" >        Photo.findAll()</span>
-            .then(<span class="fstat-no" title="function not covered" >re</span>sult =&gt; {
-<span class="cstat-no" title="statement not covered" >                res.status(200).json(result);</span>
+    static getAllPhotos(req, res) {
+        Photo.findAll()
+            .then(result =&gt; {
+                res.status(200).json(result);
             })
             .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
 <span class="cstat-no" title="statement not covered" >                res.status(500).json(err);</span>
             })
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    st</span>atic getOnePhotoById(req,res) {
+<span class="fstat-no" title="function not covered" >    st</span>atic getOnePhotoById(req, res) {
 &nbsp;
         let id = <span class="cstat-no" title="statement not covered" >+req.params.id;</span>
 &nbsp;
@@ -268,12 +268,12 @@ class PhotoController {
             })
     }
 &nbsp;
-    static createPhoto(req,res) {
+    static createPhoto(req, res) {
         const { title, caption, image_url } = req.body;
 &nbsp;
         console.log(title);
         Photo.create({
-            title,caption,image_url
+            title, caption, image_url
         })
             .then(result =&gt; {
                 res.status(201).json(result)
@@ -282,12 +282,12 @@ class PhotoController {
 <span class="cstat-no" title="statement not covered" >                res.status(500).json(err)</span>
             })
     }
-    
-<span class="fstat-no" title="function not covered" >    st</span>atic updateOnePhotoById(req,res) {
+&nbsp;
+<span class="fstat-no" title="function not covered" >    st</span>atic updateOnePhotoById(req, res) {
         let id = <span class="cstat-no" title="statement not covered" >+req.params.id;</span>
-        
-        const {title,caption,image_url} = <span class="cstat-no" title="statement not covered" >req.body;</span>
-        
+&nbsp;
+        const { title, caption, image_url } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+&nbsp;
         let data = <span class="cstat-no" title="statement not covered" >{</span>
             title,
             caption,
@@ -297,10 +297,10 @@ class PhotoController {
 <span class="cstat-no" title="statement not covered" >        Photo.update(</span>
             data,
             {
-                where:{
+                where: {
                     id
                 },
-                returning:true
+                returning: true
             }
         )
             .then(<span class="fstat-no" title="function not covered" >re</span>sult =&gt; {
@@ -311,11 +311,11 @@ class PhotoController {
             })
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    st</span>atic deleteOnePhotoById(req,res) {
+<span class="fstat-no" title="function not covered" >    st</span>atic deleteOnePhotoById(req, res) {
         let id = <span class="cstat-no" title="statement not covered" >+req.params.id;</span>
-        
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        Photo.destroy({</span>
-            where:{
+            where: {
                 id
             }
         })
@@ -337,7 +337,7 @@ module.exports = PhotoController;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-14T13:03:06.431Z
+                at 2022-11-14T15:06:30.024Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

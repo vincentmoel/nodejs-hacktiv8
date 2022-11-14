@@ -2,7 +2,7 @@ const { Photo } = require('../models');
 
 
 class PhotoController {
-    static getAllPhotos(req,res) {
+    static getAllPhotos(req, res) {
         Photo.findAll()
             .then(result => {
                 res.status(200).json(result);
@@ -12,7 +12,7 @@ class PhotoController {
             })
     }
 
-    static getOnePhotoById(req,res) {
+    static getOnePhotoById(req, res) {
 
         let id = +req.params.id;
 
@@ -25,12 +25,12 @@ class PhotoController {
             })
     }
 
-    static createPhoto(req,res) {
+    static createPhoto(req, res) {
         const { title, caption, image_url } = req.body;
 
         console.log(title);
         Photo.create({
-            title,caption,image_url
+            title, caption, image_url
         })
             .then(result => {
                 res.status(201).json(result)
@@ -39,12 +39,12 @@ class PhotoController {
                 res.status(500).json(err)
             })
     }
-    
-    static updateOnePhotoById(req,res) {
+
+    static updateOnePhotoById(req, res) {
         let id = +req.params.id;
-        
-        const {title,caption,image_url} = req.body;
-        
+
+        const { title, caption, image_url } = req.body;
+
         let data = {
             title,
             caption,
@@ -54,10 +54,10 @@ class PhotoController {
         Photo.update(
             data,
             {
-                where:{
+                where: {
                     id
                 },
-                returning:true
+                returning: true
             }
         )
             .then(result => {
@@ -68,11 +68,11 @@ class PhotoController {
             })
     }
 
-    static deleteOnePhotoById(req,res) {
+    static deleteOnePhotoById(req, res) {
         let id = +req.params.id;
-        
+
         Photo.destroy({
-            where:{
+            where: {
                 id
             }
         })

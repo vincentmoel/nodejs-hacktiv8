@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "npx jest --runInBand --detectOpenHandles --forceExit",
     "db:create:test" : "npx sequelize db:create --env test",
-    "db:migrate:test" : "set NODE_ENV=test & npx sequelize db:migrate"
+    "db:migrate:test" : "npx sequelize db:migrate --env test"
   },
   "jest": {
     "collectCoverage": true
